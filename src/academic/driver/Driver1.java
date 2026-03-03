@@ -14,8 +14,6 @@ public class Driver1 {
         List<Course> courses = new ArrayList<>(); // Menggunakan ArrayList karena array biasa memiliki ukuran tetap
 
         String line;
-        System.out.println("Masukkan data course (kode#nama#sks#grade). Ketik '---' untuk berhenti:");
-
         while (true) {
             line = inputScanner.nextLine();
             if (line.equals("---")) {
@@ -41,8 +39,6 @@ public class Driver1 {
             }
         }
 
-        // Menampilkan semua data course yang telah diinput
-        System.out.println("\n--- Data Course Tersimpan ---");
         for (Course course : courses) {
             System.out.println(course.toString());
         }

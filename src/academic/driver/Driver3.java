@@ -13,8 +13,6 @@ public class Driver3 {
         Scanner inputScanner = new Scanner(System.in);
         List<Enrollment> enrollments = new ArrayList<>(); // Menggunakan ArrayList untuk penyimpanan dinamis
 
-        System.out.println("Masukkan data enrollment (kode_mk#nim#tahun_akademik#semester). Ketik '---' untuk berhenti:");
-
         String line;
         while (true) {
             line = inputScanner.nextLine();
@@ -40,8 +38,6 @@ public class Driver3 {
             }
         }
 
-        // Menampilkan semua data enrollment yang telah diinput
-        System.out.println("\n--- Data Enrollment Tersimpan ---");
         for (Enrollment enrollment : enrollments) {
             System.out.println(enrollment.toString());
         }

@@ -16,7 +16,6 @@ public class Driver4 {
         Scanner inputScanner = new Scanner(System.in);
         List<Object> records = new ArrayList<>(); // Menggunakan List<Object> untuk menyimpan semua jenis data
 
-        System.out.println("Masukkan data (course-add#... atau student-add#... atau enrollment-add#...). Ketik '---' untuk berhenti:");
 
         String line;
         while (true) {
@@ -80,8 +79,6 @@ public class Driver4 {
             }
         }
 
-        // Menampilkan semua data yang telah diinput sesuai urutan penerimaan
-        System.out.println("\n--- Data Tersimpan ---");
         for (Object record : records) {
             // Karena setiap model memiliki method toString() yang sesuai, kita bisa langsung memanggilnya
             System.out.println(record.toString());
