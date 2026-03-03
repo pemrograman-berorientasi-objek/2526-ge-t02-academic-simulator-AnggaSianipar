@@ -6,10 +6,10 @@ package academic.model;
 public class Student {
     private String id;
     private String name;
-    private String year; // Menggunakan String untuk tahun angkatan
+    private String year; // Pastikan ini String
     private String major;
 
-    public Student(String id, String name, String year, String major) {
+    public Student(String id, String name, String year, String major) { // Konstruktor menerima String year
         this.id = id;
         this.name = name;
         this.year = year;
