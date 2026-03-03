@@ -16,6 +16,9 @@ public class Driver1 {
 
         String line;
 
+        // Meminta input dari user
+        System.out.println("Masukkan data course (kode#nama#sks#grade). Ketik '---' untuk berhenti:");
+
         while (true) {
             line = inputScanner.nextLine();
             if (line.equals("---")) {
@@ -24,14 +27,14 @@ public class Driver1 {
 
             String[] segments = line.split("#");
 
-        
+            // Memastikan input memiliki 4 segmen
             if (segments.length == 4) {
                 String code = segments[0];
                 String name = segments[1];
                 int credits = Integer.parseInt(segments[2]); // Asumsi input SKS selalu valid integer
-                char grade = segments[3].charAt(0);          // Asumsi input grade selalu karakter tunggal
+                String grade = segments[3];          // **PERBAIKAN: Mengambil seluruh string grade, bukan hanya karakter pertama**
 
-                Course course = new Course(code, name, credits, grade);
+                Course course = new Course(code, name, credits, grade); // Menggunakan konstruktor Course yang menerima String grade
                 courses.add(course);
             } else {
                 // Menangani kasus jika segmen tidak 4, tanpa validasi error eksplisit ke user
@@ -40,6 +43,8 @@ public class Driver1 {
             }
         }
 
+        // Menampilkan semua data course yang telah diinput
+        System.out.println("\n--- Data Course Tersimpan ---");
         for (Course course : courses) {
             System.out.println(course.toString());
         }
