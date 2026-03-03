@@ -1,14 +1,14 @@
 package academic.model;
 
 /**
- * @author 12S24032 Angga B. P. Sianipar
+ * @author 12S24015 LUCAS PARDEDE
  */
 
 public class Course {
     private String code;
     private String name;
     private int credits;
-    private String grade; // Tipe data grade adalah String
+    private String grade; // This field holds the last segment of the course input, e.g., 'C' or 'D'
 
     public Course(String code, String name, int credits, String grade) {
         this.code = code;
@@ -17,7 +17,6 @@ public class Course {
         this.grade = grade;
     }
 
-    // Getter methods
     public String getCode() {
         return code;
     }
@@ -39,3 +38,4 @@ public class Course {
         return code + "|" + name + "|" + credits + "|" + grade;
     }
 }
+

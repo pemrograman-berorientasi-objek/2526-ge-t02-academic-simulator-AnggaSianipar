@@ -3,6 +3,7 @@ package academic.driver;
 /**
  * @author 12S24032 Angga B. P. Sianipar
  */
+
 import academic.model.Course;
 import java.util.ArrayList;
 import java.util.List; // Using List interface for better practice
@@ -36,3 +37,4 @@ public class Driver1 {
         input.close();
     }
 }
+

@@ -1,24 +1,24 @@
 package academic.model;
 
 /**
- * @author 12S24032 Angga B. P. Sianipar
+ * @author 12S24015 LUCAS PARDEDE
  */
+
 public class Enrollment {
     private String courseCode;
     private String studentId;
     private String academicYear;
     private String semester;
-    private String grade; // Default ke "None" jika belum ada nilai
+    private String grade; // Default 'None' as per prompt
 
     public Enrollment(String courseCode, String studentId, String academicYear, String semester) {
         this.courseCode = courseCode;
         this.studentId = studentId;
         this.academicYear = academicYear;
         this.semester = semester;
-        this.grade = "None"; // Sesuai permintaan output default "None"
+        this.grade = "None"; // Default grade
     }
 
-    // Getter methods
     public String getCourseCode() {
         return courseCode;
     }
@@ -39,14 +39,9 @@ public class Enrollment {
         return grade;
     }
 
-    // Setter untuk grade, jika nanti diperlukan untuk update nilai
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    // Method untuk format output sesuai permintaan
     @Override
     public String toString() {
         return courseCode + "|" + studentId + "|" + academicYear + "|" + semester + "|" + grade;
     }
 }
+

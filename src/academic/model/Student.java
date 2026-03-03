@@ -1,22 +1,22 @@
 package academic.model;
 
 /**
- * @author 12S24032 Angga B. P. Sinipar
+ * @author 12S24015 LUCAS PARDEDE
  */
+
 public class Student {
     private String id;
     private String name;
-    private String year; // Pastikan ini String
+    private int year;
     private String major;
 
-    public Student(String id, String name, String year, String major) { // Konstruktor menerima String year
+    public Student(String id, String name, int year, String major) {
         this.id = id;
         this.name = name;
         this.year = year;
         this.major = major;
     }
 
-    // Getter methods
     public String getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class Student {
         return name;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
@@ -33,9 +33,9 @@ public class Student {
         return major;
     }
 
-    // Method untuk format output sesuai permintaan
     @Override
     public String toString() {
         return id + "|" + name + "|" + year + "|" + major;
     }
 }
+

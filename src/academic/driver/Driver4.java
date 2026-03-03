@@ -5,91 +5,84 @@ package academic.driver;
  */
 
 import academic.model.Course;
-import academic.model.Enrollment;
 import academic.model.Student;
+import academic.model.Enrollment;
 import java.util.ArrayList;
-import java.util.List; // Menggunakan List interface
+import java.util.List;
 import java.util.Scanner;
 
 public class Driver4 {
     public static void main(String[] args) {
-        Scanner inputScanner = new Scanner(System.in);
-        // Menggunakan satu List<Object> untuk menyimpan semua jenis record agar urutan input terjaga
-        List<Object> records = new ArrayList<>(); 
+        Scanner input = new Scanner(System.in);
+        List<Course> courses = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
+        List<Enrollment> enrollments = new ArrayList<>();
 
-        System.out.println("Masukkan data (course-add#... atau student-add#... atau enrollment-add#...). Ketik '---' untuk berhenti:");
-
-        String line;
-        while (true) {
-            line = inputScanner.nextLine();
+        while (input.hasNextLine()) {
+            String line = input.nextLine();
             if (line.equals("---")) {
                 break;
             }
 
-            // Memecah baris input. Split dengan limit 2 agar bagian setelah command tidak terpecah lebih lanjut
-            String[] commandAndData = line.split("#", 2); 
-            
-            // Memastikan setidaknya ada command dan data yang menyertainya
-            if (commandAndData.length >= 2) {
-                String command = commandAndData[0];
-                String dataString = commandAndData[1];
-                
-                // Memecah string data menjadi segmen-segmen individual
-                String[] dataSegments = dataString.split("#"); 
+            String[] parts = line.split("#", 2); // Split only at the first '#' to separate command from data
+            if (parts.length < 2) {
+                // Invalid input format, continue to next line
+                continue;
+            }
+            String command = parts[0];
+            String dataString = parts[1];
+            String[] data = dataString.split("#"); // Split the rest of the data by '#'
 
-                switch (command) {
-                    case "course-add":
-                        // Memastikan ada 4 segmen data (setelah command)
-                        if (dataSegments.length == 4) {
-                            String code = dataSegments[0];
-                            String name = dataSegments[1];
-                            int credits = Integer.parseInt(dataSegments[2]);
-                            String grade = dataSegments[3]; // Grade sekarang String
-                            records.add(new Course(code, name, credits, grade));
-                        } else {
-                            System.err.println("Peringatan: Format input 'course-add' tidak sesuai. Baris ini akan dilewati: " + line);
-                        }
-                        break;
-                    case "student-add":
-                        // Memastikan ada 4 segmen data (setelah command)
-                        if (dataSegments.length == 4) {
-                            String id = dataSegments[0];
-                            String name = dataSegments[1];
-                            String year = dataSegments[2]; // PERBAIKAN: Mengambil tahun sebagai String
-                            String major = dataSegments[3];
-                            records.add(new Student(id, name, year, major)); // PERBAIKAN: Memanggil konstruktor dengan String year
-                        } else {
-                            System.err.println("Peringatan: Format input 'student-add' tidak sesuai. Baris ini akan dilewati: " + line);
-                        }
-                        break;
-                    case "enrollment-add":
-                        // Memastikan ada 4 segmen data (setelah command)
-                        if (dataSegments.length == 4) {
-                            String courseCode = dataSegments[0];
-                            String studentId = dataSegments[1];
-                            String academicYear = dataSegments[2];
-                            String semester = dataSegments[3];
-                            records.add(new Enrollment(courseCode, studentId, academicYear, semester));
-                        } else {
-                            System.err.println("Peringatan: Format input 'enrollment-add' tidak sesuai. Baris ini akan dilewati: " + line);
-                        }
-                        break;
-                    default:
-                        System.err.println("Peringatan: Perintah tidak dikenal. Baris ini akan dilewati: " + line);
-                        break;
-                }
-            } else {
-                System.err.println("Peringatan: Baris input kosong atau tidak valid (tidak ada command). Baris ini akan dilewati: " + line);
+            switch (command) {
+                case "course-add":
+                    if (data.length == 4) {
+                        String code = data[0];
+                        String name = data[1];
+                        int credits = Integer.parseInt(data[2]);
+                        String grade = data[3];
+                        courses.add(new Course(code, name, credits, grade));
+                    }
+                    break;
+                case "student-add":
+                    if (data.length == 4) {
+                        String id = data[0];
+                        String name = data[1];
+                        int year = Integer.parseInt(data[2]);
+                        String major = data[3];
+                        students.add(new Student(id, name, year, major));
+                    }
+                    break;
+                case "enrollment-add":
+                    if (data.length == 4) {
+                        String courseCode = data[0];
+                        String studentId = data[1];
+                        String academicYear = data[2];
+                        String semester = data[3];
+                        enrollments.add(new Enrollment(courseCode, studentId, academicYear, semester));
+                    }
+                    break;
+                default:
+                    // Unknown command, ignore
+                    break;
             }
         }
 
-        // Menampilkan semua data yang telah diinput sesuai urutan penerimaan
-        System.out.println("\n--- Data Tersimpan ---");
-        for (Object record : records) {
-            // Karena semua model memiliki method toString() yang sesuai, kita bisa langsung memanggilnya
-            System.out.println(record.toString());
+        // Display courses
+        for (Course course : courses) {
+            System.out.println(course);
         }
 
-        inputScanner.close();
+        // Display students
+        for (Student student : students) {
+            System.out.println(student);
+        }
+
+        // Display enrollments
+        for (Enrollment enrollment : enrollments) {
+            System.out.println(enrollment);
+        }
+
+        input.close();
     }
 }
+
