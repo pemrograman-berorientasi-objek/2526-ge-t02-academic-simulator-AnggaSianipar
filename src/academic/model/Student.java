@@ -3,7 +3,6 @@ package academic.model;
 /**
  * @author 12S24032 Angga B. P. Sinipar
  */
-
 public class Student {
     private String id;
     private String name;

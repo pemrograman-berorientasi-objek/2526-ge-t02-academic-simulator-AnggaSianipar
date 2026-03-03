@@ -1,8 +1,7 @@
 package academic.driver;
 
 /**
- * @author NIM Nama
- * @author NIM Nama
+ * @author 12S24032 Angga B. P. Sianipar
  */
 import academic.model.Course;
 import academic.model.Student;
@@ -38,8 +37,8 @@ public class Driver4 {
                         if (segments.length == 5) {
                             String code = segments[1];
                             String name = segments[2];
-                            int credits = Integer.parseInt(segments[3]);
-                            String grade = segments[4]; // Mengambil seluruh string grade
+                            int credits = Integer.parseInt(segments[3]); // Asumsi integer valid
+                            char grade = segments[4].charAt(0);          // Asumsi char valid
                             Course course = new Course(code, name, credits, grade);
                             records.add(course);
                         } else {
@@ -84,10 +83,10 @@ public class Driver4 {
         // Menampilkan semua data yang telah diinput sesuai urutan penerimaan
         System.out.println("\n--- Data Tersimpan ---");
         for (Object record : records) {
+            // Karena setiap model memiliki method toString() yang sesuai, kita bisa langsung memanggilnya
             System.out.println(record.toString());
         }
 
         inputScanner.close();
     }
 }
-

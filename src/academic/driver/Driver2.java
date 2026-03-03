@@ -14,6 +14,7 @@ public class Driver2 {
         List<Student> students = new ArrayList<>(); // Menggunakan ArrayList untuk penyimpanan dinamis
 
         String line;
+        System.out.println("Masukkan data student (id#nama#tahun#jurusan). Ketik '---' untuk berhenti:");
 
         while (true) {
             line = inputScanner.nextLine();
@@ -39,7 +40,8 @@ public class Driver2 {
             }
         }
 
-
+        // Menampilkan semua data student yang telah diinput
+        System.out.println("\n--- Data Student Tersimpan ---");
         for (Student student : students) {
             System.out.println(student.toString());
         }

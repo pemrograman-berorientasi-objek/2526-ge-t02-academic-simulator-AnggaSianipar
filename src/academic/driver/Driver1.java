@@ -3,7 +3,6 @@ package academic.driver;
 /**
  * @author 12S24032 Angga B. P. Sianipar
  */
-
 import academic.model.Course;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +14,6 @@ public class Driver1 {
         List<Course> courses = new ArrayList<>(); // Menggunakan ArrayList karena array biasa memiliki ukuran tetap
 
         String line;
-
-        // Meminta input dari user
         System.out.println("Masukkan data course (kode#nama#sks#grade). Ketik '---' untuk berhenti:");
 
         while (true) {
@@ -25,16 +22,17 @@ public class Driver1 {
                 break;
             }
 
+            // Memecah input menjadi 4 segmen
             String[] segments = line.split("#");
 
-            // Memastikan input memiliki 4 segmen
+            // Memastikan input memiliki 4 segmen (tanpa validasi kesalahan, sesuai permintaan)
             if (segments.length == 4) {
                 String code = segments[0];
                 String name = segments[1];
                 int credits = Integer.parseInt(segments[2]); // Asumsi input SKS selalu valid integer
-                String grade = segments[3];          // **PERBAIKAN: Mengambil seluruh string grade, bukan hanya karakter pertama**
+                char grade = segments[3].charAt(0);          // Asumsi input grade selalu karakter tunggal
 
-                Course course = new Course(code, name, credits, grade); // Menggunakan konstruktor Course yang menerima String grade
+                Course course = new Course(code, name, credits, grade);
                 courses.add(course);
             } else {
                 // Menangani kasus jika segmen tidak 4, tanpa validasi error eksplisit ke user

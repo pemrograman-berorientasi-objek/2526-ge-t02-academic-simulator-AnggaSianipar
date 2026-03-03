@@ -7,9 +7,9 @@ public class Course {
     private String code;
     private String name;
     private int credits;
-    private String grade; // Tipe data grade diubah dari char menjadi String
+    private char grade; // Menggunakan char untuk grade A, B, C, D, E
 
-    public Course(String code, String name, int credits, String grade) { // Konstruktor juga disesuaikan
+    public Course(String code, String name, int credits, char grade) {
         this.code = code;
         this.name = name;
         this.credits = credits;
@@ -29,7 +29,7 @@ public class Course {
         return credits;
     }
 
-    public String getGrade() { // Getter disesuaikan
+    public char getGrade() {
         return grade;
     }
 
